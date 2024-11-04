@@ -1,10 +1,16 @@
 require("dotenv").config()
 const express = require("express")
 const app = express()
+const routes = require("./routes")
+const mongodb = require("./database/database")
 const port = process.env.PORT || 3000
 
-app.get("/", (req, res) => {
-    res.send("Hello, World")
+app.use("/", routes)
+mongodb.initDb((err) => {
+    if (err) {
+        console.log(err)
+    } else {
+        app.listen(port, console.log(`Database is connecting and listening at ${port}`))
+    }
 })
 
-app.listen(port, console.log(`Web service is listening at ${port}`))
