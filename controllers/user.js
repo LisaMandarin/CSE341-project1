@@ -50,8 +50,36 @@ const createUser = async(req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    try {
+        const userId = new ObjectId(req.params.userId)
+        console.log("userId", userId)
+        if (!userId) {
+            return res.status(404).json({message: "Can't find the user ID"})
+        }
+
+        const { firstName, lastName, email, favoriteColor, birthday } = req.body
+        if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+            return res.status(400).json({message: "All fields are required"})
+        }
+
+        const user = { firstName, lastName, email, favoriteColor, birthday }
+        const result = await mongodb.getDb().db("cse341_project1").collection("users").replaceOne({_id: userId}, user)
+        if (result.modifiedCount) {
+            return res.status(204).json({message: `${userId} has been updated`})
+        } else {
+            return res.status(500).json({message: `Unable to update ${userId}`})
+        }
+
+    } catch (error) {
+        console.error("Failed to update the user: ", error.message)
+        res.status(500).json({message: error.message || "Error occurred while updating the user"})
+    }
+}
+
 module.exports = {
     getAll,
     getSingle,
     createUser,
+    updateUser,
 }
