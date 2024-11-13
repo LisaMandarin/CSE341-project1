@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "67290641631aa26bba77f1c4"
+  },
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice.johnson@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1990-05-15"
+},
+{
+  "_id": {
+    "$oid": "67290770631aa26bba77f1c5"
+  },
+  "firstName": "Bob",
+  "lastName": "Smith",
+  "email": "bob.smith@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1985-11-23"
+},
+{
+  "_id": {
+    "$oid": "67290797631aa26bba77f1c6"
+  },
+  "firstName": "Catherine",
+  "lastName": "Lee",
+  "email": "catherine.lee@example.com",
+  "favoriteColor": "Red",
+  "birthday": "1993-07-30"
+},
+{
+  "_id": {
+    "$oid": "672907b8631aa26bba77f1c7"
+  },
+  "firstName": "David",
+  "lastName": "Kim",
+  "email": "david.kim@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "1988-02-19"
+},
+{
+  "_id": {
+    "$oid": "672907d8631aa26bba77f1c8"
+  },
+  "firstName": "Emily",
+  "lastName": "Brown",
+  "email": "emily.brown@example.com",
+  "favoriteColor": "Yellow",
+  "birthday": "1995-10-12"
+}]
