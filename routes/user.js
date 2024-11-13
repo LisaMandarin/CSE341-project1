@@ -3,5 +3,6 @@ const userController = require("../controllers/user")
 
 userRouter.get("/", userController.getAll)
 userRouter.get("/:id", userController.getSingle)
+userRouter.post("/", userController.createUser)
 
 module.exports = userRouter
