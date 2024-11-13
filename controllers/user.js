@@ -2,6 +2,7 @@ const mongodb = require("../database/database")
 const ObjectId = require("mongodb").ObjectId
 
 const getAll = async(req, res) => {
+    // #swagger.description = "Get all users"
     try {
         const result = await mongodb.getDb().db("cse341_project1").collection("users").find()
         const users = await result.toArray()
@@ -18,20 +19,20 @@ const getAll = async(req, res) => {
 }
 
 const getSingle = async(req, res) => {
+    // #swagger.description = "Get the user by ID"
     try {
-        console.log("userId: ", req.params.id)
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})
         }
 
-        const userId = new ObjectId(req.params.id)
-        const result = await mongodb.getDb().db("cse341_project1").collection("users").findOne({_id : userId})
+        const id = new ObjectId(req.params.id)
+        const result = await mongodb.getDb().db("cse341_project1").collection("users").findOne({_id : id})
 
         if (result) {
             // res.setHeader("Content-Type", "application/json")
             return res.status(200).json(result)
         } else {
-            return res.status(404).json({message: `User ${req.params.userId} not found`})
+            return res.status(404).json({message: `User ${req.params.id} not found`})
         }
 
     } catch (error) {
@@ -41,6 +42,7 @@ const getSingle = async(req, res) => {
 }
 
 const createUser = async(req, res) => {
+    // #swagger.description = "Create a user data"
     try {
         const { firstName, lastName, email, favoriteColor, birthday } = req.body
         if ( !firstName || !lastName || !email || !favoriteColor || !birthday ) {
@@ -63,8 +65,9 @@ const createUser = async(req, res) => {
 }
 
 const updateUser = async (req, res) => {
+    // #swagger.description = "update a user by ID"
     try {
-        if (!ObjectId.isValid(req.params.userId)) {
+        if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})
         }
 
@@ -74,13 +77,13 @@ const updateUser = async (req, res) => {
         }
 
         const user = { firstName, lastName, email, favoriteColor, birthday }
-        const userId = new ObjectId(req.params.userId)
-        const result = await mongodb.getDb().db("cse341_project1").collection("users").replaceOne({_id: userId}, user)
+        const id = new ObjectId(req.params.id)
+        const result = await mongodb.getDb().db("cse341_project1").collection("users").replaceOne({_id: id}, user)
 
         if (result.modifiedCount > 0) {
-            return res.status(200).json({message: `User ${req.params.userId} has been updated`})
+            return res.status(200).json({message: `User ${req.params.id} has been updated`})
         } else {
-            return res.status(404).json({message: `User ${req.params.userId} not found or no change mode`})
+            return res.status(404).json({message: `User ${req.params.id} not found or no change mode`})
         }
 
     } catch (error) {
@@ -90,18 +93,19 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
+    // #swagger.description = "Delete a user by ID"
     try {
-        if (!ObjectId.isValid(req.params.userId)) {
+        if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})
         }
 
-        const userId = new ObjectId(req.params.userId)
-        const result = await mongodb.getDb().db("cse341_project1").collection("users").deleteOne({_id: userId})
+        const id = new ObjectId(req.params.id)
+        const result = await mongodb.getDb().db("cse341_project1").collection("users").deleteOne({_id: id})
         
         if (result.deletedCount > 0) {
-            return res.status(200).json({message: `${req.params.userId} has been deleted`})
+            return res.status(200).json({message: `${req.params.id} has been deleted`})
         } else {
-            return res.status(404).json({message: `User ${req.params.userId} not found`})
+            return res.status(404).json({message: `User ${req.params.id} not found`})
         }
 
     } catch (error) {

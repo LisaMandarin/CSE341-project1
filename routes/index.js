@@ -1,8 +1,14 @@
 const router = require("express").Router()
+const swaggerRoute = require("./swagger.js")
+const usersRoute = require("./user.js")
 
 router.get("/", (req, res) => {
-    res.status(200).send("Hello, World")
+    let docData = {
+        documentationURL: "https://github.com/LisaMandarin/CSE341-project1"
+    };
+    res.send(docData)
 })
-router.use("/users", require("./user.js"))
+router.use("/api-docs", swaggerRoute)
+router.use("/users", usersRoute)
 
 module.exports = router
