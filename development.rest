@@ -1,0 +1,37 @@
+### 
+GET http://localhost:3000/
+
+### 
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/6734dce806697285dc302b85
+
+###
+
+POST http://localhost:3000/users 
+content-type: application/json
+
+{
+    "firstName": "ExampleF",
+    "lastName": "ExampleL",
+    "email": "example@example.com",
+    "favoriteColor": "exampleColor",
+    "birthday": "exampleBirthday"
+}
+
+###
+PUT  http://localhost:3000/users/6734dce806697285dc302b85
+content-type: application/json
+
+{
+    "firstName": "updatedF",
+    "lastName": "updatedL",
+    "email": "update@update.com",
+    "favoriteColor": "exampleColor",
+    "birthday": "exampleBirthday"
+}
+
+###
+DELETE  http://localhost:3000/users/6734dce806697285dc302b85
+

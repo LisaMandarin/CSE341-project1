@@ -1,0 +1,37 @@
+### 
+GET https://cse341-project1-95ra.onrender.com/
+
+### 
+GET https://cse341-project1-95ra.onrender.com/users
+
+###
+GET https://cse341-project1-95ra.onrender.com/users/6734f47cd457cd732923fd3a
+
+###
+
+POST https://cse341-project1-95ra.onrender.com/users 
+content-type: application/json
+
+{
+    "firstName": "ExampleF",
+    "lastName": "ExampleL",
+    "email": "example@example.com",
+    "favoriteColor": "exampleColor",
+    "birthday": "exampleBirthday"
+}
+
+###
+PUT  https://cse341-project1-95ra.onrender.com/users/6734f47cd457cd732923fd3a
+content-type: application/json
+
+{
+    "firstName": "updatedF",
+    "lastName": "updatedL",
+    "email": "update@update.com",
+    "favoriteColor": "exampleColor",
+    "birthday": "exampleBirthday"
+}
+
+###
+DELETE  https://cse341-project1-95ra.onrender.com/users/6734f47cd457cd732923fd3a
+
