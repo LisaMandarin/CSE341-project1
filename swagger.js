@@ -5,8 +5,8 @@ const doc = {
         title: "User API",
         description: "You can create a new user, get all users, get a specific user, update a user, and delete a user."
     },
-    host: "localhost:3000",
-    schemes: ["http"],
+    host: "cse341-project1-95ra.onrender.com",
+    schemes: ["https"],
 };
 
 const outputFile = "./swagger.json"

@@ -4,7 +4,8 @@ const usersRoute = require("./user.js")
 
 router.get("/", (req, res) => {
     let docData = {
-        documentationURL: "https://github.com/LisaMandarin/CSE341-project1"
+        GitHubRepository: "https://github.com/LisaMandarin/CSE341-project1",
+        apiDocs: "https://cse341-project1-95ra.onrender.com/api-docs"
     };
     res.send(docData)
 })

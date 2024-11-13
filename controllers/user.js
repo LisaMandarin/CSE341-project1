@@ -3,6 +3,7 @@ const ObjectId = require("mongodb").ObjectId
 
 const getAll = async(req, res) => {
     // #swagger.description = "Get all users"
+    // #swagger.tags = ['Users']
     try {
         const result = await mongodb.getDb().db("cse341_project1").collection("users").find()
         const users = await result.toArray()
@@ -20,6 +21,7 @@ const getAll = async(req, res) => {
 
 const getSingle = async(req, res) => {
     // #swagger.description = "Get the user by ID"
+    // #swagger.tags = ['Users']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})
@@ -43,6 +45,7 @@ const getSingle = async(req, res) => {
 
 const createUser = async(req, res) => {
     // #swagger.description = "Create a user data"
+    // #swagger.tags = ['Users']
     try {
         const { firstName, lastName, email, favoriteColor, birthday } = req.body
         if ( !firstName || !lastName || !email || !favoriteColor || !birthday ) {
@@ -66,6 +69,7 @@ const createUser = async(req, res) => {
 
 const updateUser = async (req, res) => {
     // #swagger.description = "update a user by ID"
+    // #swagger.tags = ['Users']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})
@@ -94,6 +98,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     // #swagger.description = "Delete a user by ID"
+    // #swagger.tags = ['Users']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json({message: "Invalid user ID format"})

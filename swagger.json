@@ -5,10 +5,10 @@
     "description": "You can create a new user, get all users, get a specific user, update a user, and delete a user.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project1-95ra.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -23,6 +23,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "Get all users",
         "responses": {
           "200": {
@@ -34,6 +37,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Users"
+        ],
         "description": "Create a user data",
         "parameters": [
           {
@@ -76,6 +82,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "Get the user by ID",
         "parameters": [
           {
@@ -101,6 +110,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
         "description": "update a user by ID",
         "parameters": [
           {
@@ -150,6 +162,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "Delete a user by ID",
         "parameters": [
           {
